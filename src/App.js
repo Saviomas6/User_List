@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
 import PaginationPage from "./Pageination";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
@@ -32,44 +43,25 @@ const App = () => {
   }, [page]);
   return (
     <>
-      <div className="design">
+      <div className="text-center design">
         <h2>List of Users</h2>
-        <div className="container-fluid mt-2">
-          <div className="row text-center">
+        <div>
+          <div className="row justify-content-center text-center">
             {users.map((curE) => {
               return (
-                <div className="col-12 col-md-6  mt-5" key={curE.id}>
-                  <div className="card p-2">
-                    <div className="d-flex align-items-center">
-                      <div className="image">
-                        <img
-                          src={curE.avatar}
-                          className="rounded"
-                          width="155"
-                          alt="users"
-                        />
-                        <div className="ml-3 w-100">
-                          <h4 className="mb-0 mt-0 textLeft">
-                            First Name:{curE.first_name}
-                          </h4>
-                          <h4 className="mb-0 mt-0 textLeft">
-                            Last Name:{curE.last_name}
-                          </h4>
-                          <h4 className="mb-0 mt-0 textLeft">
-                            Email:{curE.email}
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <MDBCard className="m-5" style={{ maxWidth: "23rem" }}>
+                  <MDBCardBody>
+                    <MDBCardImage src={curE.avatar} position="top" alt="..." />
+                    <MDBCardTitle>First Name:{curE.first_name}</MDBCardTitle>
+                    <MDBCardTitle>Last Name:{curE.last_name}</MDBCardTitle>
+                    <MDBCardTitle>Email:{curE.email}</MDBCardTitle>
+                  </MDBCardBody>
+                </MDBCard>
               );
             })}
           </div>
         </div>
-      </div>
-      <br />
-      <div>
+
         <PaginationPage
           data1={getdata1}
           data2={getdata2}

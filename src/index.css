@@ -12,7 +12,5 @@ code {
     monospace;
 }
 .design {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  background-color: #ece2d0;
 }
